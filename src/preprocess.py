@@ -63,4 +63,22 @@ loadStock.to_csv(
     index=False
 )
 ############### Factor Calculation ####################################################################
+#Loas clean stock price datatset into a DataFram and treat "Date" column as actual dates
+#DataFrame is an Excel spreadsheet inside python
+#parse_dates, without it pandas might read dates as string 
+#CSV
+# Date          Close_AAPL   Close_AMZN
+# 2015-01-02    24.19        15.42
+# 2015-01-05    23.51        15.10
 
+#Dataframe
+#         Date        Close_AAPL   Close_AMZN
+# 0   2015-01-02       24.19        15.42
+# 1   2015-01-05       23.51        15.10
+
+df = pd.read_csv(
+    "data/processed/stock_prices_clean.csv",
+    parse_dates=["Date"]
+)
+
+#Calculate daily returns
